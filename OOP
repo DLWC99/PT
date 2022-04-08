@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+class Student
+{
+
+	string stu_name;
+	string stu_id;
+	string id_card;
+	decimal mark;
+
+	public override string ToString()
+	{
+		return stu_name + " " + stu_id + " " +
+			id_card + " " + mark;
+	}
+
+	static void Main(string[] args)
+	{
+
+		List<Student> stu = new List<Student>()
+	{
+
+		new Student{ stu_name = "Ali" , stu_id = "BCS21090021",
+					id_card = "990207136131", mark = 65 },
+		new Student{ stu_name = "Bobby" , stu_id = "BCS21090001",
+					id_card = "990605137837", mark = 70 },
+		new Student{ stu_name = "Carrie" , stu_id = "BCS21070043",
+					id_card = "990931134321", mark = 78 },
+		new Student{ stu_name = "Danny" , stu_id = "BCS21090013",
+					id_card = "991205136070", mark = 70 },
+		new Student{ stu_name = "Tony" , stu_id = "BCS21090022",
+					id_card = "990831135851", mark = 85 },
+	};
+
+		IEnumerable<Student> Query = from student in stu select student;
+
+
+		Console.WriteLine("Name  StudentID  IDCard  Mark");
+		Console.WriteLine("-----------------------------------");
+		foreach (Student e in Query)
+		{
+
+			// Call the to string method
+			Console.WriteLine(e.ToString());
+		}
+	}
+}
